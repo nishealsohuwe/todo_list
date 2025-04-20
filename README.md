@@ -1,7 +1,7 @@
 QUICK START
 ===========
 
-```git clone https://github.com/ваш-логин/todo-list-api.git```
+```git clone https://github.com/nishealsohuwe/todo_list.git```
 
 ```cd todo-list-api```
 
