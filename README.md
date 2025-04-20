@@ -1,13 +1,13 @@
 QUICK START
 ===========
 
-git clone https://github.com/ваш-логин/todo-list-api.git
+```git clone https://github.com/ваш-логин/todo-list-api.git```
 
-cd todo-list-api
+```cd todo-list-api```
 
-cp .env.example .env
+```cp .env.example .env```
 
-composer install --no-dev
+```composer install --no-dev```
 
   
 
