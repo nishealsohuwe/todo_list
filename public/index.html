@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+        <h1>Мои задачи</h1>
+        <div v-if="!isAuthenticated">
+            <input v-model="auth.email" placeholder="Email">
+            <input v-model="auth.password" type="password" placeholder="Пароль">
+            <button @click="register">Регистрация</button>
+            <button @click="login">Вход</button>
+        </div>
+        <div v-else>
+            <button @click="logout">Выйти</button>
+        </div>
+        </header>
+
+        <div v-if="isAuthenticated">
+            <!-- Селектор количества задач -->
+            <div class="per-page-selector">
+                <span>Задач на странице:</span>
+                <select @change="changePerPage($event.target.value)" v-model="pagination.perPage">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                </select>
+            </div>
+            <!-- Добавлятор задач -->
+            <form @submit.prevent="addTask">
+            <input v-model="newTask.title" placeholder="Название" required>
+            <textarea v-model="newTask.description" placeholder="Описание"></textarea>
+            <button type="submit">Добавить</button>
+            </form>
+            <!-- Вывод списка задач -->
+            <div class="tasks">
+                <div v-for="task in tasks" :key="task.id" class="task">
+                    <input v-model="task.title" @blur="updateTask(task)">
+
+                    <div class="task-description">
+                    <textarea 
+                        v-model="task.description" 
+                        @blur="updateTask(task)"
+                        placeholder="Добавьте описание..."
+                        v-if="task.showDescription || task.description"
+                    ></textarea>
+                    <p 
+                        v-else 
+                        @click="task.showDescription = true"
+                        class="placeholder"
+                    >+ Добавить описание</p>
+                    </div>
+
+                    <select v-model="task.status" @change="updateTask(task)">
+                        <option value="в работе">В работе</option>
+                        <option value="завершено">Завершено</option>
+                        <option value="дедлайн">Дедлайн</option>
+                    </select>
+
+                    <button @click="deleteTask(task.id)">×</button>
+                </div>
+            </div>
+            <!-- Навигация по страницам -->
+            <div class="pagination">
+                <button 
+                @click="changePage(pagination.currentPage - 1)"
+                :disabled="pagination.currentPage === 1"
+                >← Назад</button>
+                
+                <span>Страница {{ pagination.currentPage }} из {{ Math.ceil(pagination.total / pagination.perPage) }}</span>
+                
+                <button
+                @click="changePage(pagination.currentPage + 1)"
+                :disabled="pagination.currentPage * pagination.perPage >= pagination.total"
+                >Вперед →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/app.js"></script>
+</body>
+</html>

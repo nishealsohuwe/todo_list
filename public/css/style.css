@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .task {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  .task input[type="text"] {
+    flex-grow: 1;
+  }
+  
+  .task-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .task-description textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .task-description .placeholder {
+    color: #999;
+    cursor: pointer;
+    padding: 8px;
+    margin: 0;
+  }
+  
+  .task-description .placeholder:hover {
+    background: #f5f5f5;
+  }
+
+  /* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+  }
+  
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Селектор количества */
+  .per-page-selector {
+    margin-bottom: 15px;
+  }
+  
+  .per-page-selector select {
+    padding: 5px;
+    margin-left: 10px;
+  }
+  
+  button {
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
