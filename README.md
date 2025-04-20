@@ -3,7 +3,7 @@ QUICK START
 
 ```git clone https://github.com/nishealsohuwe/todo_list.git```
 
-```cd todo-list```
+```cd todo_list```
 
 ```cp .env.example .env```
 
