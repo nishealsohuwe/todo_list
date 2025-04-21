@@ -10,7 +10,7 @@ QUICK START
 ```composer install --no-dev```
 
 DB INIT
-===========
+-----------
 
 ```
 CREATE DATABASE todo_list;
@@ -32,10 +32,16 @@ CREATE TABLE tasks (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 ```
+
+RUNSERVER
+-----------
+```
+php -S localhost:8000 -t public
+```
   
 
 Description
------------
+===========
 
 ### TodoList API is a RESTful web application for task management with JWT authentication. 
 ### Users can create, edit, delete, and view tasks with pagination, and filter them by status ("in progress", "completed", "deadline"). 
